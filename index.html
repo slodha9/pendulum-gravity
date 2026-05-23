@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PETROVA LAB // Pendulum Gravity Experiment</title>
+<meta name="description" content="A Project Hail Mary book club science experiment — estimate gravity with a pendulum." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="starfield" id="starfield"></div>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
+<!-- ============ INTRO SCREEN ============ -->
+<section class="screen active" id="screen-intro">
+  <div class="intro-wrap">
+    <div class="petrova-line"></div>
+    <p class="kicker">HAIL MARY // SCIENCE LOG</p>
+    <h1 class="title">PENDULUM<br><span class="title-accent">GRAVITY</span><br>EXPERIMENT</h1>
+    <p class="subtitle">"I penny-pinch every joule, every gram, every second. Because out here, the math is the only thing that doesn't lie."</p>
+    <div class="intro-card">
+      <p class="mono small">
+        Estimate the local gravitational acceleration <em>g</em> using nothing but a string,
+        a small weight, and a stopwatch — the same way humans figured out gravity centuries
+        before they ever left Earth. Ryland Grace would approve.
+      </p>
+    </div>
+    <button class="btn btn-primary big" onclick="goTo('screen-instructions')">
+      <span class="btn-label">ENTER EXPERIMENT</span>
+      <span class="btn-arrow">&#9656;</span>
+    </button>
+    <p class="mono tiny dim">SYSTEM STATUS: NOMINAL &nbsp;•&nbsp; CREW: AWAKE &nbsp;•&nbsp; OBJECTIVE: MEASURE g</p>
+  </div>
+</section>
+
+<!-- ============ INSTRUCTIONS SCREEN ============ -->
+<section class="screen" id="screen-instructions">
+  <div class="panel">
+    <header class="panel-head">
+      <p class="kicker">PHASE 01</p>
+      <h2 class="panel-title">SETUP &amp; PROCEDURE</h2>
+    </header>
+
+    <div class="materials">
+      <p class="mono small label-line">// MATERIALS REQUIRED</p>
+      <div class="material-grid">
+        <div class="material-chip"><span class="m-icon">&#10146;</span> String / shoelace</div>
+        <div class="material-chip"><span class="m-icon">&#9919;</span> Key, washer or small weight</div>
+        <div class="material-chip"><span class="m-icon">&#9986;</span> Tape</div>
+        <div class="material-chip"><span class="m-icon">&#128207;</span> Ruler / measuring tape</div>
+        <div class="material-chip"><span class="m-icon">&#9201;</span> Stopwatch (provided below)</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Build the pendulum</h3>
+          <p>Tie the weight to one end of the string. Hang the other end from a fixed point — a shelf, a lamp, a curtain rod, or a broom balanced between two chairs. Aim for a length of about <strong>1 meter (3 ft)</strong>.</p>
+        </div>
+        <svg class="step-svg" viewBox="0 0 120 120" aria-hidden="true">
+          <line x1="10" y1="20" x2="110" y2="20" stroke="var(--amber)" stroke-width="3"/>
+          <line x1="60" y1="20" x2="60" y2="90" stroke="var(--cyan)" stroke-width="2" stroke-dasharray="4 4"/>
+          <circle cx="60" cy="96" r="9" fill="var(--amber)"/>
+        </svg>
+      </article>
+
+      <article class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Measure the length L</h3>
+          <p>Measure from the pivot point to the <em>center</em> of the weight. Enter this value in the next phase. Precision here matters most — it's squared in nothing, but it's linear in <em>g</em>.</p>
+        </div>
+        <svg class="step-svg" viewBox="0 0 120 120" aria-hidden="true">
+          <line x1="20" y1="15" x2="100" y2="15" stroke="var(--amber)" stroke-width="3"/>
+          <line x1="60" y1="15" x2="60" y2="95" stroke="var(--cyan)" stroke-width="2"/>
+          <circle cx="60" cy="100" r="8" fill="var(--amber)"/>
+          <line x1="78" y1="15" x2="78" y2="100" stroke="var(--text-dim)" stroke-width="1"/>
+          <text x="82" y="60" fill="var(--cyan)" font-size="13" font-family="monospace">L</text>
+        </svg>
+      </article>
+
+      <article class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Pull aside &amp; release</h3>
+          <p>Pull the weight a small angle to one side (under ~15°) and release gently — <strong>do not push</strong>. A small swing keeps the physics honest.</p>
+        </div>
+        <svg class="step-svg" viewBox="0 0 120 120" aria-hidden="true">
+          <line x1="10" y1="15" x2="110" y2="15" stroke="var(--amber)" stroke-width="3"/>
+          <line x1="60" y1="15" x2="60" y2="95" stroke="var(--text-dim)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <line x1="60" y1="15" x2="30" y2="88" stroke="var(--cyan)" stroke-width="2"/>
+          <circle cx="28" cy="92" r="8" fill="var(--amber)"/>
+          <path d="M60 55 A 40 40 0 0 0 42 78" fill="none" stroke="var(--cyan)" stroke-width="1.5"/>
+        </svg>
+      </article>
+
+      <article class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Time 10 full swings</h3>
+          <p>Start the stopwatch and count <strong>10 complete swings</strong> (over and back = 1 swing). Timing 10 instead of 1 divides your reaction-time error by ten. Record the total time, then repeat.</p>
+        </div>
+        <svg class="step-svg" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="42" fill="none" stroke="var(--amber)" stroke-width="3"/>
+          <line x1="60" y1="60" x2="60" y2="28" stroke="var(--cyan)" stroke-width="3"/>
+          <line x1="60" y1="60" x2="84" y2="60" stroke="var(--cyan)" stroke-width="2"/>
+          <circle cx="60" cy="60" r="4" fill="var(--amber)"/>
+        </svg>
+      </article>
+    </div>
+
+    <div class="predict-box">
+      <p class="mono small label-line">// CREW PREDICTIONS (discuss before you measure)</p>
+      <ul class="predict-list">
+        <li>Does a <strong>heavier</strong> weight swing faster?</li>
+        <li>Does a <strong>bigger arc</strong> swing faster?</li>
+        <li>Does a <strong>longer</strong> string swing faster?</li>
+      </ul>
+      <p class="mono tiny dim">Most people get at least one wrong. The pendulum doesn't care what you believe.</p>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn btn-ghost" onclick="goTo('screen-intro')">&#9666; BACK</button>
+      <button class="btn btn-primary" onclick="goTo('screen-record')"><span class="btn-label">BEGIN RECORDING</span> <span class="btn-arrow">&#9656;</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECORD SCREEN ============ -->
+<section class="screen" id="screen-record">
+  <div class="panel">
+    <header class="panel-head">
+      <p class="kicker">PHASE 02</p>
+      <h2 class="panel-title">DATA ACQUISITION</h2>
+    </header>
+
+    <!-- String length config -->
+    <div class="config-box">
+      <p class="mono small label-line">// PENDULUM CONFIGURATION</p>
+      <div class="string-config">
+        <div class="field">
+          <label for="len1">STRING 1 — Length L₁ (meters)</label>
+          <input type="number" id="len1" step="0.001" min="0.01" placeholder="1.000" value="1.000" oninput="renderTables()" />
+        </div>
+        <div class="field" id="len2-field" style="display:none;">
+          <label for="len2">STRING 2 — Length L₂ (meters)</label>
+          <input type="number" id="len2" step="0.001" min="0.01" placeholder="0.500" value="0.500" oninput="renderTables()" />
+        </div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-str2" onchange="toggleString2()" />
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        <span class="toggle-label">Add a second string (compare gravity vs. length)</span>
+      </label>
+    </div>
+
+    <!-- Swing count + trial count config -->
+    <div class="config-box">
+      <div class="dual-config">
+        <div class="field">
+          <label for="swings">SWINGS PER TRIAL (N)</label>
+          <input type="number" id="swings" step="1" min="1" value="10" oninput="renderTables()" />
+          <p class="hint">How many full swings you time each run. 10 is recommended.</p>
+        </div>
+        <div class="field">
+          <label for="trials">NUMBER OF TRIALS TO RECORD</label>
+          <div class="stepper">
+            <button class="step-btn" onclick="adjustTrials(-1)">&minus;</button>
+            <input type="number" id="trials" step="1" min="1" max="20" value="3" onchange="renderTables()" />
+            <button class="step-btn" onclick="adjustTrials(1)">+</button>
+          </div>
+          <p class="hint">More trials = a more accurate average. Pick how many you want.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stopwatch -->
+    <div class="stopwatch-box">
+      <p class="mono small label-line">// MISSION CLOCK</p>
+      <div class="stopwatch-display" id="sw-display">00:00.00</div>
+      <div class="sw-controls">
+        <button class="btn btn-primary" id="sw-toggle" onclick="toggleStopwatch()">START</button>
+        <button class="btn btn-ghost" onclick="resetStopwatch()">RESET</button>
+        <button class="btn btn-ghost" id="sw-lap" onclick="logLap()" disabled>LOG &#9656; FIELD</button>
+      </div>
+      <p class="mono tiny dim" id="sw-hint">Time your swings here, then tap LOG to drop the value into the next empty time field.</p>
+    </div>
+
+    <!-- Data tables (rendered by JS) -->
+    <div id="tables-mount"></div>
+
+    <div class="nav-row">
+      <button class="btn btn-ghost" onclick="goTo('screen-instructions')">&#9666; BACK</button>
+      <button class="btn btn-primary" onclick="goToResults()"><span class="btn-label">CALCULATE g</span> <span class="btn-arrow">&#9656;</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS SCREEN ============ -->
+<section class="screen" id="screen-results">
+  <div class="panel">
+    <header class="panel-head">
+      <p class="kicker">PHASE 03 // FINAL READOUT</p>
+      <h2 class="panel-title">GRAVITATIONAL ANALYSIS</h2>
+    </header>
+
+    <div class="formula-box">
+      <p class="mono small label-line">// THE MATH</p>
+      <div class="formula">
+        T = 2&pi;&radic;<span class="frac"><span class="num">L</span><span class="den">g</span></span>
+        <span class="formula-arrow">&rarr;</span>
+        g = <span class="frac"><span class="num">4&pi;<sup>2</sup>L</span><span class="den">T<sup>2</sup></span></span>
+      </div>
+      <p class="mono tiny dim">where T is the time for ONE swing = (total time) / N. We solve for g.</p>
+    </div>
+
+    <div id="results-mount"></div>
+
+    <div class="earth-compare" id="earth-compare"></div>
+
+    <!-- ============ SIMPLE EXPLAINER ============ -->
+    <div class="explainer">
+      <p class="mono small label-line">// WAIT... WHAT DID WE JUST DO?</p>
+      <h3 class="explainer-title">The whole thing, in plain English</h3>
+
+      <div class="eli5-grid">
+        <div class="eli5-card">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <line x1="50" y1="12" x2="50" y2="70" stroke="var(--cyan)" stroke-width="2"/>
+            <circle cx="50" cy="76" r="10" fill="var(--amber)"/>
+            <path d="M50 76 Q 78 60 70 30" fill="none" stroke="var(--text-dim)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <path d="M50 76 Q 22 60 30 30" fill="none" stroke="var(--text-dim)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          </svg>
+          <p><strong>1. We made a swinger.</strong> A weight on a string swings back and forth like a tiny trapeze. One full “there-and-back” is a swing.</p>
+        </div>
+
+        <div class="eli5-card">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="34" fill="none" stroke="var(--amber)" stroke-width="3"/>
+            <line x1="50" y1="50" x2="50" y2="24" stroke="var(--cyan)" stroke-width="3"/>
+            <line x1="50" y1="50" x2="69" y2="50" stroke="var(--cyan)" stroke-width="2"/>
+            <circle cx="50" cy="50" r="3.5" fill="var(--amber)"/>
+          </svg>
+          <p><strong>2. We timed it.</strong> Gravity is what pulls the weight back down each time. Stronger pull = faster swinging. So the <em>speed of the swing secretly tells us how strong gravity is.</em></p>
+        </div>
+
+        <div class="eli5-card">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="55" r="30" fill="none" stroke="var(--cyan)" stroke-width="2"/>
+            <path d="M50 25 a30 30 0 0 1 26 15" fill="none" stroke="var(--amber)" stroke-width="3"/>
+            <text x="50" y="62" fill="var(--good)" font-size="22" font-family="Orbitron, monospace" font-weight="700" text-anchor="middle">g</text>
+          </svg>
+          <p><strong>3. We let the math finish the job.</strong> Plug the length and the swing time into one tidy formula and out pops <em>g</em> — the strength of gravity right where you’re sitting.</p>
+        </div>
+      </div>
+
+      <div class="punchline">
+        <span class="punchline-icon">🔑</span>
+        <p>You just weighed an entire planet’s pull using a <strong>shoelace, a key, and a stopwatch.</strong> No lab, no rocket. That number near <strong>9.8</strong> is the same gravity holding your coffee in its mug — and you measured it yourself. <em>That’s</em> the Ryland Grace move.</p>
+      </div>
+
+      <div class="fun-facts">
+        <div class="fun-fact"><span class="ff-q">Heavier weight?</span><span class="ff-a">Doesn’t matter. A bowling ball and a marble swing at the same speed.</span></div>
+        <div class="fun-fact"><span class="ff-q">Bigger push?</span><span class="ff-a">Barely matters. Tiny swings and gentle swings keep time almost identically.</span></div>
+        <div class="fun-fact"><span class="ff-q">Longer string?</span><span class="ff-a">THIS is the one that matters. Longer = slower, lazier swings.</span></div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn btn-ghost" onclick="goTo('screen-record')">&#9666; ADJUST DATA</button>
+      <button class="btn btn-primary" onclick="goTo('screen-intro')"><span class="btn-label">RESTART MISSION</span></button>
+    </div>
+    <p class="credit mono tiny dim">PETROVA LAB TERMINAL • Book Club Edition • Inspired by <em>Project Hail Mary</em> by Andy Weir</p>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
